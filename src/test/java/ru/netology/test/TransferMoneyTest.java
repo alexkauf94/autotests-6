@@ -35,7 +35,7 @@ class MoneyTransferTest {
     }
 
     @Test
-    void shouldShowErrorMesageIfAmountExceedsBalance() {
+    void shouldShowErrorMessageIfAmountExceedsBalance() {
         var loginPage = open("http://localhost:9999", LoginPage.class);
 
         var authInfo = DataHelper.getAuthInfo();
@@ -51,7 +51,7 @@ class MoneyTransferTest {
         var amount = invalidAmount(secondCardBalance);
         var transferPage = dashboardPage.selectCard(cardInfoSecond);
         transferPage.validTransfer(String.valueOf(amount), cardInfoFirst);
-        transferPage.findErrorMesage("Вы ввели сумму, превышающую остаток средств на Вашей карте. Пожалуйста, введите другую сумму");
+        transferPage.findErrorMessage("Выполнена попытка перевода суммы, превышающей остаток на карте списания");
 
         assertEquals(firstCardBalance, dashboardPage.getCardBalance(cardInfoFirst));
         assertEquals(secondCardBalance, dashboardPage.getCardBalance(cardInfoSecond));
