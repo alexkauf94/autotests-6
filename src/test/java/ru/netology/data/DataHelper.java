@@ -22,14 +22,14 @@ public class DataHelper {
         private String code;
     }
 
-    public static VerificationCode getVerificationCodeFor(AuthInfo authInfo) {
+    public static VerificationCode getVerificationCode() {
         return new VerificationCode("12345");
     }
 
     @Value
     public static class CardInfo {
         private String cardNumber;
-        private String cardId;
+        private String testId;
     }
 
     public static CardInfo getFirstCardInfo() {
@@ -41,11 +41,11 @@ public class DataHelper {
                 "0f3f5c2a-249e-4c3d-8287-09f7a039391d");
     }
 
-    public static int validAmount (int balance) {
+    public static int generateValidAmount (int balance) {
         return new Random().nextInt(balance) + 1;
     }
 
-    public static int invalidAmount (int balance) {
+    public static int generateInvalidAmount (int balance) {
         return Math.abs(balance) + new Random().nextInt(10000);
     }
 }
